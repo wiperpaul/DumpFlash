@@ -243,6 +243,8 @@ class NandIO:
 		return self.Slow
 
 	def GetID(self):
+		self.sendCmd(self.NAND_CMD_RESET)
+		time.sleep(0.1)
 		self.sendCmd(self.NAND_CMD_READID)
 		self.sendAddr(0,1)
 		id=self.readFlashData(8)
